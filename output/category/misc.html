@@ -19,7 +19,7 @@
 
   <title>
     Grant Miller-Francisco
-&ndash; About  </title>
+&ndash; Category: misc  </title>
 
 </head>
 
@@ -43,26 +43,34 @@
     <header>
       <p>
       <a href="..">Index</a> &brvbar; <a href="../archives.html">Archives</a>
+&gt; Category: misc
       </p>
     </header>
 
 <article>
   <div class="article_title">
-    <h3><a href="../pages/about.html">About</a></h3>
+    <h3><a href="../arcpy-documentation.html">arcpy documentation</a></h3>
   </div>
   <div class="article_text">
-    <blockquote>
-<p>"The mind is not a vessel to be filled, but a fire to be kindled."
--Plutarch</p>
-</blockquote>
-<p>I enjoy programming with a spatial bent, primarily in Python, increasingly in JavaScript. I work mostly in ArcGIS using arcpy, but enjoy making maps with postgis, d3, mapnik, mapbox, leaflet and cartodb.</p>
-<p>I have worked for nine years as a GIS Analyst (currently at HDR) in multiple domains, including environmental remediation, locating military munitions using remote sensing (LiDAR, orthophotography, magnetics), cultural resource surveys, and marine species surveys.</p>
-  </div>
-  <div class="article_meta">
-    <p>Updated on: Mon 29 June 2015</p>
+    <p>Need a listing of the arcpy package? Here's how to write the documentation to a file:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">pydoc</span>
+<span class="n">out_file</span> <span class="o">=</span> <span class="s">r&#39;c:\home\pydev\arcpy_docs.txt&#39;</span> 
+<span class="n">strhelp</span> <span class="o">=</span> <span class="n">pydoc</span><span class="o">.</span><span class="n">plain</span><span class="p">(</span><span class="n">pydoc</span><span class="o">.</span><span class="n">render_doc</span><span class="p">(</span><span class="n">arcpy</span><span class="p">,</span> <span class="s">&quot;Help on </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">))</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">destination</span><span class="p">:</span>
+    <span class="n">destination</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">strhelp</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Two things about this ...</p>
   </div>
 </article>
 
+<footer>
+<div id="paginator">
+
+</div>
+</footer>
 
     <div id="ending_message">
       <p>&copy; Grant Miller-Francisco. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
