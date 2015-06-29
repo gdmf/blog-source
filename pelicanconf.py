@@ -30,6 +30,7 @@ SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
-
+THEME = 'pelican-themes/crowsfoot'
+PROFILE_IMAGE_URL = 'https://scontent-sea1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/10410306_10152626573132920_8234824516358264410_n.jpg?oh=989db6950e93cee81456cc1b1352ead6&oe=561DF2D2'
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
