@@ -1,3 +1,7 @@
+Title: arcpy documentation
+Date: 2015-06-29
+Tags: python, arcpy
+
 Need a listing of the arcpy package? Here's how to write the documentation to a file:
 
 ```python

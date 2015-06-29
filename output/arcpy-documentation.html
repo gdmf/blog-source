@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-      <title>Grant Miller-Francisco - Articles by gdmf</title>
+      <title>Grant Miller-Francisco</title>
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
       <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
       <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
@@ -39,22 +39,21 @@
 
 <section class="content">
 
-  <ol id="postlist">
+  <h3 class="posttitle">
+    <a class="nodec" href="/arcpy-documentation.html" rel="bookmark" title="Permalink to arcpy documentation">
+      arcpy documentation
+    </a>
+  </h3>
 
-    <li class="post">
-        <header class="posttitle">
-          <h3><a href="/arcpy-documentation.html"
-                  rel="bookmark"
-                  class="nodec"
-                  title="Permalink to arcpy documentation">arcpy documentation</a>
-          </h3>
-        </header>
+  <div class="postinfo">
+    <p class="published" title="2015-06-29T00:00:00-07:00">
+      Mon 29 June 2015
+    </p>
 
-        <div class="postinfo">
-          <p class="published" title="2015-06-29T00:00:00-07:00"> Mon 29 June 2015 </p>
-        </div><!-- /.postinfo -->
+  </div><!-- .postinfo -->
 
-        <div class="postsummary"> <p>Need a listing of the arcpy package? Here's how to write the documentation to a file:</p>
+  <div class="article">
+    <p>Need a listing of the arcpy package? Here's how to write the documentation to a file:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="kn">import</span> <span class="nn">pydoc</span>
 <span class="n">out_file</span> <span class="o">=</span> <span class="s">r&#39;c:\home\pydev\arcpy_docs.txt&#39;</span> 
@@ -64,16 +63,19 @@
 </pre></div>
 
 
-<p>Two things about this ...</p> </div>
-    </li>
+<p>Two things about this were not obvious to me. First, for unknown (to me, at least) reasons, writing <code>arcpy.__doc__</code> to a file results in a TypeError. The call to <code>pydoc.render_doc</code> <a href="http://stackoverflow.com/questions/7123660/python-help-function-printing-docstrings," title="Thanks, stackoverflow!">gets around</a> that. </p>
+<p>Secondly, the output contains some unsightly boldface formatting. The call to <code>pydoc.plain</code> <a href="http://stackoverflow.com/questions/15133537/pydoc-render-doc-adds-characters-how-to-avoid-that,">removes it</a>.</p>
+<p>Here's another useful tip: use arcpy's Usage method to list the parameters for any tool.</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Usage</span><span class="p">(</span><span class="s">&quot;Clip_analysis&quot;</span><span class="p">)</span>
+</pre></div>
 
-  </ol><!-- /#post-list -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
+<p>Get complete help information from the docstring:</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Clip_analysis</span><span class="o">.</span><span class="n">__doc__</span>
+</pre></div>
+  </div><!-- .content -->
 
-</section><!-- /#content -->
+</section>
 
 
     <!-- footer -->
