@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Grant Miller-Francisco'
 SITENAME = u'Grant Miller-Francisco'
-SITEURL = ''
+SITEURL = 'http://gdmf.github.io'
 
 PATH = 'content'
 
