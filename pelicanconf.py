@@ -29,7 +29,6 @@ SOCIAL = (('Github', 'http://github.com/gdmf'),
 
 DEFAULT_PAGINATION = 10
 THEME = 'pelican-themes/pelican-svbhack'
-SITEURL = 'http://gdmf.github.io'
 
 USER_LOGO_URL = SITEURL + '/images/gdmf.png'
 TAGLINE = 'spatial | python | javascript'
