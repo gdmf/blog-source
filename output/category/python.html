@@ -3,11 +3,11 @@
 
 <head>
   <!-- ## for client-side less
-  <link rel="stylesheet/less" type="text/css" href="./theme/css/style.less">
+  <link rel="stylesheet/less" type="text/css" href="../theme/css/style.less">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
   -->
-  <link rel="stylesheet" type="text/css" href="./theme/css/style.css">
-  <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="../theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../theme/css/pygments.css">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
 
   <meta charset="utf-8" />
@@ -16,24 +16,23 @@
   <meta name="description" content="Posts and writings by Grant Miller-Francisco">
 
 
-<meta name="keywords" content="arcpy">
 
   <title>
     Grant Miller-Francisco
-&ndash; ArcPy Documentation  </title>
+&ndash; Category: python  </title>
 
 </head>
 
 <body>
   <aside>
     <div id="user_meta">
-      <a href=".">
+      <a href="..">
         <img src="http://gdmf.github.io/images/gdmf.png" alt="logo">
       </a>
-      <h2><a href=".">Grant Miller-Francisco</a></h2>
+      <h2><a href="..">Grant Miller-Francisco</a></h2>
       <p>spatial | python | javascript</p>
       <ul>
-        <li><a href="./pages/about.html">About</a></li>
+        <li><a href="../pages/about.html">About</a></li>
         <li><a href="http://github.com/gdmf" target="_blank">Github</a></li>
         <li><a href="mailto:g.millfran@gmail.com" target="_blank">email</a></li>
       </ul>
@@ -43,13 +42,23 @@
   <main>
     <header>
       <p>
-      <a href=".">Index</a> &brvbar; <a href="./archives.html">Archives</a>
+      <a href="..">Index</a> &brvbar; <a href="../archives.html">Archives</a>
+&gt; Category: python
       </p>
     </header>
 
 <article>
   <div class="article_title">
-    <h3><a href="./arcpy-documentation.html">ArcPy Documentation</a></h3>
+    <h3><a href="../list-comps.html">List Comps</a></h3>
+  </div>
+  <div class="article_text">
+    <p>If I had to choose my single favorite programming idiom in Python, I wouldn't even need to pause to consider; hands down, it's list comprehensions. I use them all the time, and once you understand them, so will you. They are easy to, well, comprehend, and yet allow ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="../arcpy-documentation.html">ArcPy Documentation</a></h3>
   </div>
   <div class="article_text">
     <p>Need a listing of the arcpy package? Here's how to write the documentation to a file:</p>
@@ -62,27 +71,15 @@
 </pre></div>
 
 
-<p>Two things about this were not obvious to me. First, for unknown (to me, at least) reasons, writing <code>arcpy.__doc__</code> to a file results in a TypeError. The call to <code>pydoc.render_doc</code> <a href="http://stackoverflow.com/questions/7123660/python-help-function-printing-docstrings," title="Thanks, stackoverflow!">gets around</a> that. </p>
-<p>Secondly, the output contains some unsightly boldface formatting. The call to <code>pydoc.plain</code> <a href="http://stackoverflow.com/questions/15133537/pydoc-render-doc-adds-characters-how-to-avoid-that,">removes it</a>.</p>
-<p>Here's another useful tip: use arcpy's Usage method to list the parameters for any tool.</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Usage</span><span class="p">(</span><span class="s">&quot;Clip_analysis&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Get complete help information from the docstring:</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Clip_analysis</span><span class="o">.</span><span class="n">__doc__</span>
-</pre></div>
+<p>Two things about this ...</p>
   </div>
-  <div class="article_meta">
-    <p>Posted on: Mon 29 June 2015</p>
-    <p>Category: <a href="./category/python.html">python</a>
- &ndash; Tags:
-      <a href="./tag/arcpy.html">arcpy</a>    </p>
-  </div>
-
-
 </article>
 
+<footer>
+<div id="paginator">
+
+</div>
+</footer>
 
     <div id="ending_message">
       <p>&copy; Grant Miller-Francisco. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>

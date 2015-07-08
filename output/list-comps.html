@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="./theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="./theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Grant Miller-Francisco">
+  <meta name="description" content="Posts and writings by Grant Miller-Francisco">
+
+
+<meta name="keywords" content="arcpy">
+
+  <title>
+    Grant Miller-Francisco
+&ndash; List Comps  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href=".">
+        <img src="http://gdmf.github.io/images/gdmf.png" alt="logo">
+      </a>
+      <h2><a href=".">Grant Miller-Francisco</a></h2>
+      <p>spatial | python | javascript</p>
+      <ul>
+        <li><a href="./pages/about.html">About</a></li>
+        <li><a href="http://github.com/gdmf" target="_blank">Github</a></li>
+        <li><a href="mailto:g.millfran@gmail.com" target="_blank">email</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href=".">Index</a> &brvbar; <a href="./archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="./list-comps.html">List Comps</a></h3>
+  </div>
+  <div class="article_text">
+    <p>If I had to choose my single favorite programming idiom in Python, I wouldn't even need to pause to consider; hands down, it's list comprehensions. I use them all the time, and once you understand them, so will you. They are easy to, well, comprehend, and yet allow you to do powerful things concisely.</p>
+<h3>Syntax</h3>
+<p>Let's look at the basic syntax. At its heart, a list comprehension (or 'list comp') is simply a way to build a new list from an existing sequence or iterable. Suppose you have a list of words:</p>
+<div class="highlight"><pre><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;freaking&#39;</span><span class="p">,</span> <span class="s">&#39;love&#39;</span><span class="p">,</span> <span class="s">&#39;list&#39;</span><span class="p">,</span> <span class="s">&#39;comps&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Now let's say you want to build a list of uppercase words from this list of lowercase words. You might first create an empty list, and then in a <code>for</code> loop append the result of <code>upper()</code>:</p>
+<div class="highlight"><pre><span class="n">cap_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="n">cap_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">&#39;I&#39;</span><span class="p">,</span> <span class="s">&#39;FREAKING&#39;</span><span class="p">,</span> <span class="s">&#39;LOVE&#39;</span><span class="p">,</span> <span class="s">&#39;LIST&#39;</span><span class="p">,</span> <span class="s">&#39;COMPS&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Using a list comp, you can do this more effieciently:</p>
+<div class="highlight"><pre><span class="n">cap_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">&#39;I&#39;</span><span class="p">,</span> <span class="s">&#39;FREAKING&#39;</span><span class="p">,</span> <span class="s">&#39;LOVE&#39;</span><span class="p">,</span> <span class="s">&#39;LIST&#39;</span><span class="p">,</span> <span class="s">&#39;COMPS&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Basically you now have an expression (the part doing the real work here) followed by a <code>for</code> loop, all wrapped up in brackets and assigned to <code>cap_words</code>. Three lines have become one. The gain in conciseness is reason enough to use them, but list comps also give you the ability to filter while constructing your new list.</p>
+<h3>Filtering Using <code>if</code></h3>
+<p>List comps accept an optional <code>if</code> clause at the end, after the <code>for</code> loop:</p>
+<div class="highlight"><pre><span class="n">cap_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">is</span> <span class="s">&#39;freaking&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">&#39;FREAKING&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>What happened here? The <code>if</code> statement (<code>if word is 'freaking'</code>) was applied to each element of <code>words</code> in turn. Only those elements which evaluate to True are passed to the expression <code>word.upper()</code>. </p>
+<p>Note that this list comprehension is very readable. Say it out loud: it returns "word dot upper for word in words if word is 'freaking'." Once you understand list comp syntax, it is easy to grasp what any given list comp is doing (nested list comps being a possible exception). Using a list comp is like thinking a complete thought or phrase. This ease of expression is one of its great strengths.</p>
+<h3><code>if...else</code></h3>
+<p>List comps can accept <code>if...else</code> statements as well, though the the order is different:</p>
+<div class="highlight"><pre><span class="n">cap_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">is</span> <span class="s">&#39;freaking&#39;</span> <span class="k">else</span> <span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;FREAKING&#39;</span><span class="p">,</span> <span class="s">&#39;love&#39;</span><span class="p">,</span> <span class="s">&#39;list&#39;</span><span class="p">,</span> <span class="s">&#39;comps&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Nested list comps can be slightly more confusing, but allow you to create a list by iterating through multiple lists. See 'Further Reading' for examples.</p>
+<h3>Use-Cases</h3>
+<p>Let's get to some specific arcpy use-cases. I frequently use list comps to iterate through specific file types in a directory. For instance, let's say I want to do something to a folder full of mxds, while leaving other files in the folder alone. Use a list comprehension with a filter to put the mxd names into a list:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">mxds</span> <span class="o">=</span> <span class="p">[</span><span class="nb">file</span> <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="o">&lt;</span><span class="n">directory</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.mxd&#39;</span><span class="p">)]</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">&#39;Figure 1.mxd&#39;</span><span class="p">,</span> <span class="s">&#39;Figure 2.mxd&#39;</span><span class="p">,</span> <span class="n">etc</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Now it is easy to iterate over only those mxds:</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="n">mxd</span> <span class="ow">in</span> <span class="n">mxds</span><span class="p">:</span>
+    <span class="c"># do something</span>
+</pre></div>
+
+
+<p>Need full paths to those mxds? Use a list comp to transform the <code>mxds</code> list into a new list:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="s">r&#39;C:\project&#39;</span>
+<span class="n">full_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">mxd</span><span class="p">)</span> <span class="k">for</span> <span class="n">mxd</span> <span class="ow">in</span> <span class="n">mxds</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">&#39;C:\project\Figure 1.mxd&#39;</span><span class="p">,</span> <span class="s">&#39;C:\project\Figure 2.mxd&#39;</span><span class="p">,</span> <span class="n">etc</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Or, create full paths at the same time you filter for .mxd:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="s">r&#39;C:\project&#39;</span>
+<span class="n">full_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span> <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="o">&lt;</span><span class="n">directory</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.mxd&#39;</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>Another use is to build a list of fieldnames from a feature class:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">feature</span> <span class="n">class</span><span class="o">&gt;</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>Or read a feature class into a list:</p>
+<div class="highlight"><pre><span class="n">fields</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="o">&lt;</span><span class="n">mxd</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">da</span><span class="o">.</span><span class="n">SearchCursor</span><span class="p">(</span><span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">feature</span> <span class="n">class</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">fields</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>Any time you want to build a list, filter a list, or transform one list into another, you should think to yourself: "I FREAKING LOVE LIST COMPS"!</p>
+<h3>Further Reading:</h3>
+<ul>
+<li>https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions</li>
+</ul>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 07 July 2015</p>
+    <p>Category: <a href="./category/python.html">python</a>
+ &ndash; Tags:
+      <a href="./tag/arcpy.html">arcpy</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Grant Miller-Francisco. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>
